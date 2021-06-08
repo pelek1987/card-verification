@@ -1,6 +1,8 @@
-# eslint-prettier-jest-env
+# card-verfication project
 
-## Jak ropocząć prace z aplikacją
+## simple card number checker
+
+### Jak ropocząć prace z aplikacją
 
 - Zainstaluj na swoim komputerze środowisko uruchomieniowe **node.js (14.x)** 
 
