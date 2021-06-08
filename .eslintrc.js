@@ -14,7 +14,7 @@ module.exports = {
     'no-plusplus': 'off',
     'no-unused-vars': 'warn',
     'no-use-before-define': ['error', { functions: false, classes: false, variables: false }],
-    'no-else-return': offscreenBuffering,
+    'no-else-return': 'off',
     'prettier/prettier': [
       'error',
       {
