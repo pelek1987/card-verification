@@ -1,19 +1,33 @@
+const cardNumbersFeatures = require('./cardNumbersFeatures');
+
 const getCardProvder = (cardNumber) => {
-
-    if(isCardNumberValid(cardNumber)) {
-        return getProvider(cardNumber);
-    } else {
-        return 'Incorrect card number';
-    }
-
+  if (isCardNumberValid(cardNumber)) {
+    return getProvider(cardNumber);
+  }
+  return 'Incorrect card number';
 };
 
 const isCardNumberValid = (cardNumber) => {
-    return true;
+  const normalizedCardNumber = normalize(cardNumber);
+  const firstSet = normalizedCardNumber.filter((_, index) => index % 2 === 0);
+  const secondSet = normalizedCardNumber.filter((_, index) => index % 2 === 1);
+  const firstSum = firstSet
+    .map((n) => (n * 2).toString())
+    .reduce((curr, next) => {
+      const firstDigit = next[0];
+      const secondDigit = next[1];
+      return curr + Number(firstDigit) + (secondDigit ? Number(secondDigit) : 0);
+    }, 0);
+  const secondSum = secondSet.reduce((curr, next) => curr + next, 0);
+  return (firstSum + secondSum) % 10 === 0;
 };
+
+const normalize = (cardNumber) =>
+  cardNumber.toString().length % 2 === 0 ? [...cardNumber.toString()].map((n) => Number(n)) : [0, ...cardNumber.toString()].map((n) => Number(n));
 
 const getProvider = (cardNumber) => {
-    throw new Error('Cannot recognize card provider');
+  throw new Error('Cannot recognize card provider');
+  
 };
 
-module.exports = getCardProvder
+module.exports = getCardProvder;

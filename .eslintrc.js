@@ -13,7 +13,8 @@ module.exports = {
     'no-console': 'off',
     'no-plusplus': 'off',
     'no-unused-vars': 'warn',
-    'no-use-before-define': ['error', { functions: false, classes: false }],
+    'no-use-before-define': ['error', { functions: false, classes: false, variables: false }],
+    'no-else-return': offscreenBuffering,
     'prettier/prettier': [
       'error',
       {
